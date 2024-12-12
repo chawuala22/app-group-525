@@ -1,0 +1,17 @@
+.container-form {
+  background: url("https://st2.depositphotos.com/1533202/7122/i/450/depositphotos_71225641-stock-photo-blurred-nature-background.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .title {
+    h1 {
+      color: white;
+    }
+  }
+  .card-form {
+  }
+}
