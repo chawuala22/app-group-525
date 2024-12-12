@@ -5,13 +5,85 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 6%;
   .title {
     h1 {
       color: white;
+      text-align: center;
     }
   }
   .card-form {
+    background-color: white;
+    height: 60%;
+    width: 60%;
+    border-radius: 4px;
+    @media (width <= 767px) {
+      height: 65vh;
+      width: 95vw;
+    }
+
+    .title-card {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding-top: 3%;
+      h2 {
+        color: #14cd87;
+      }
+    }
+    .container-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: auto;
+      height: 89%;
+      .social-media {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20% 10%;
+        .content {
+          display: flex;
+          align-items: center;
+          gap: 1%;
+          i {
+            font-size: 1.2rem;
+          }
+          a {
+            text-decoration: none;
+            color: black;
+          }
+          li {
+            list-style: none;
+          }
+        }
+
+        .icons-media {
+          display: flex;
+          padding-top: 2%;
+          gap: 8%;
+          padding-left: 7%;
+          .media {
+            display: flex;
+            align-items: center;
+            border-radius: 50%;
+            padding: 2%;
+            background-color: #14cd87;
+            i {
+              color: white;
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+      .form {
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
   }
 }
