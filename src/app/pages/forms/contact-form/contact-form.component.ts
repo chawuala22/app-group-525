@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
-
 
 @Component({
   selector: 'app-contact-form',
@@ -9,12 +9,16 @@ import { InputTextModule } from 'primeng/inputtext';
   styleUrl: './contact-form.component.scss',
 })
 export class ContactFormComponent implements OnInit {
-  sexs = [
-    {value: 'hombre', viewValue: 'Hombre'},
-    {value: 'mujer', viewValue: 'Mujer'},
+  foods: any[] = [
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' },
   ];
-  constructor(private route: ActivatedRoute) {}
+
+  contactForm!: FormGroup;
+  constructor(private route: ActivatedRoute, private fb: FormBuilder) {}
   ngOnInit(): void {
+    this.initForm();
     this.route.queryParams.subscribe((params) => {
       const validateState = params['edit'];
       console.log('ID:', validateState);
@@ -23,5 +27,17 @@ export class ContactFormComponent implements OnInit {
         console.log('Holi');
       }
     });
+  }
+
+  initForm() {
+    this.contactForm = this.fb.group({
+      sexo: [''],
+      email: [''],
+      food: [''],
+    });
+  }
+
+  sendInfo() {
+    console.log(this.contactForm.value);
   }
 }

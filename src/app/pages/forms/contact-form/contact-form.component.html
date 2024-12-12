@@ -4,7 +4,7 @@
   </div>
   <div class="card-form">
     <div class="title-card">
-      <h2>Contacto</h2>
+      <h1>Contacto</h1>
     </div>
     <div class="container-card">
       <div class="social-media">
@@ -41,18 +41,96 @@
         </div>
       </div>
       <div class="form">
-       <form action="">
-        <div class="input-group">
-            <input type="text" pInputText formControlName="text"/>
-
-        </div>
-        <div class="input-group"></div>
-        <div class="input"></div>
-        <div class="input"></div>
-        <div class="input-group"></div>
-        <div class="input-group"></div>
-        <div class="input-comments"></div>
-       </form>
+        <form [formGroup]="contactForm" (submit)="sendInfo()">
+          <div class="input-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Sexo</mat-label>
+              <mat-select formControlName="sexo">
+                @for (food of foods; track food) {
+                <mat-option [value]="food.value">{{
+                  food.viewValue
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input matInput placeholder="Ex. Pizza" />
+            </mat-form-field>
+          </div>
+          <div class="input-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre </mat-label>
+              <input matInput placeholder="Ex. Pizza" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Apellido</mat-label>
+              <input matInput placeholder="Ex. Pizza" />
+            </mat-form-field>
+          </div>
+          <div class="input">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Ex. Pizza" />
+            </mat-form-field>
+          </div>
+          <div class="input">
+            <mat-form-field appearance="outline">
+              <mat-label>Dirección</mat-label>
+              <input matInput placeholder="Ex. Pizza" />
+            </mat-form-field>
+          </div>
+          <div class="input-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Casa / apartamento</mat-label>
+              <input matInput placeholder="Ex. Pizza" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>País</mat-label>
+              <mat-select>
+                @for (food of foods; track food) {
+                <mat-option [value]="food.value">{{
+                  food.viewValue
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="input-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Departamento</mat-label>
+              <mat-select>
+                @for (food of foods; track food) {
+                <mat-option [value]="food.value">{{
+                  food.viewValue
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Ciudad</mat-label>
+              <mat-select>
+                @for (food of foods; track food) {
+                <mat-option [value]="food.value">{{
+                  food.viewValue
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="input-comments">
+            <mat-form-field appearance="outline">
+              <mat-label>Leave a comment</mat-label>
+              <textarea
+                matInput
+                placeholder="Ex. It makes me feel..."
+              ></textarea>
+            </mat-form-field>
+          </div>
+          <div class="submit">
+            <button type="submit" mat-raised-button>Enviar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
