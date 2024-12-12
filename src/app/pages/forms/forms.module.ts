@@ -9,6 +9,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+
+export const CUSTOM_DATE_FORMATS = {
+  parse: {
+    dateInput: 'YYYY-MM-DD',
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [ContactFormComponent],
@@ -21,6 +35,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
+  ],
+  providers: [
+    MatDatepickerModule,
+    { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
   ],
 })
 export class FormsModule {}
