@@ -31,8 +31,8 @@ export class ViewInfoComponent implements OnInit {
         const validateObjct = this.isObjectEmpty(info);
         if (!validateObjct) {
           this.arrayInfoJSON.push(info);
-          localStorage.setItem('users', JSON.stringify(this.arrayInfoJSON));
         }
+        localStorage.setItem('users', JSON.stringify(this.arrayInfoJSON));
       },
       error: (error: any) => {
         console.log(error);
