@@ -54,7 +54,7 @@ export class ContactFormComponent implements OnInit {
       last_name: ['', Validators.required],
       email: ['', Validators.required],
       addres: ['', Validators.required],
-      house: ['', Validators.required],
+      house: [''],
       country: ['', Validators.required],
       City: ['', Validators.required],
       comment: ['', Validators.required],

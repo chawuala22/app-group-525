@@ -1,7 +1,31 @@
+
+<input
+  pInputText
+  type="text"
+  (input)="onSearch($event)"
+  placeholder="Search..."
+/>
+
 <p-table
+  #dt
   [value]="arrayInfoJSON"
-  styleClass="p-datatable-striped"
-  [tableStyle]="{ 'min-width': '50rem' }"
+  [rows]="5"
+  [paginator]="true"
+  [globalFilterFields]="[
+    'sex',
+    'date_birthday',
+    'addres',
+    'name',
+    'email',
+    'house',
+    'country',
+    'Deparment',
+    'City',
+    'comment'
+  ]"
+  [tableStyle]="{ 'min-width': '75rem' }"
+  [rowHover]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 >
   <ng-template pTemplate="header">
     <tr>

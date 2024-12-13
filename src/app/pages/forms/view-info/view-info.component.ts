@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DataTransferService } from '../../../services/data-transfer.service';
 import { ContactFormService } from '../../../services/contact-form.service';
 import { User } from '../../../interfaces/contact-form';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-view-info',
@@ -12,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ViewInfoComponent implements OnInit {
   arrayInfoJSON: any = [];
   validateState: string = '';
+  @ViewChild('dt') dt!: Table;
   constructor(
     private _serviceData: DataTransferService,
     private _serviceInfo: ContactFormService,
@@ -84,4 +86,10 @@ export class ViewInfoComponent implements OnInit {
     localStorage.setItem('index', JSON.stringify(info));
     this.router.navigate(['/form'], { queryParams: { edit: true } });
   }
+
+  onSearch(event: Event): void {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.dt.filterGlobal(inputValue, 'contains');
+  }
+  
 }
