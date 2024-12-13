@@ -11,6 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { ViewInfoComponent } from './view-info/view-info.component';
+
+/* primeNg */
+import { TableModule } from 'primeng/table';
 
 export const CUSTOM_DATE_FORMATS = {
   parse: {
@@ -25,7 +29,7 @@ export const CUSTOM_DATE_FORMATS = {
 };
 
 @NgModule({
-  declarations: [ContactFormComponent],
+  declarations: [ContactFormComponent, ViewInfoComponent],
   imports: [
     CommonModule,
     FormsRoutingModule,
@@ -36,6 +40,7 @@ export const CUSTOM_DATE_FORMATS = {
     MatButtonModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    TableModule,
   ],
   providers: [
     MatDatepickerModule,

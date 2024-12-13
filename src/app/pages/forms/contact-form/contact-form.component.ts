@@ -5,9 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { InputTextModule } from 'primeng/inputtext';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { DataTransferService } from '../../../services/data-transfer.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -22,7 +22,12 @@ export class ContactFormComponent implements OnInit {
   cities: string[] = [];
 
   contactForm!: FormGroup;
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router,
+    private _serviceData: DataTransferService
+  ) {}
   ngOnInit(): void {
     this.initForm();
     this.route.queryParams.subscribe((params) => {
@@ -107,12 +112,15 @@ export class ContactFormComponent implements OnInit {
     });
 
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
-
-    
-      
+      this._serviceData.postInfoSelected(this.contactForm.value);
+      this.router.navigate(['view-info']);
     } else {
       this.contactForm.markAllAsTouched();
+      Swal.fire({
+        title: 'Error',
+        text: 'Campos obligatorios faltantes',
+        icon: 'warning',
+      });
     }
   }
 }
