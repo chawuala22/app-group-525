@@ -135,4 +135,8 @@ export class ContactFormComponent implements OnInit {
       });
     }
   }
+
+  navigate(){
+    this.router.navigate(['/view-info']);
+  }
 }

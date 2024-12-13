@@ -20,8 +20,8 @@
     width: 60%;
     border-radius: 4px;
     @media (width <= 767px) {
-      height: 65vh;
-      width: 95vw;
+      height: 75vh;
+      width: 98vw;
     }
 
     .title-card {
@@ -34,11 +34,18 @@
       }
     }
     .container-card {
+      @media (width <= 767px) {
+        display: flex;
+        flex-direction: column;
+      }
       display: grid;
       grid-template-columns: 1fr 1fr;
       width: auto;
       padding: 0% 3%;
       .social-media {
+        @media (width <= 767px) {
+          display: none;
+        }
         display: flex;
         flex-direction: column;
         justify-content: center;

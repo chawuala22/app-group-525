@@ -39,6 +39,9 @@
             <i class="pi pi-linkedin"></i>
           </div>
         </div>
+        <div class="container-button">
+          <button (click)="navigate()" type="submit" mat-raised-button>Ver contactos</button>
+        </div>
       </div>
       <div class="form">
         <form [formGroup]="contactForm" (submit)="sendInfo()">
