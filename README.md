@@ -3,7 +3,8 @@
 - This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
 - Design preprocessors such as Angular Material and Prime ng were used.
 - The delivered endpoint is consumed, however, the operations are stored locally
-- 
+- Firebase is used for deployment
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
