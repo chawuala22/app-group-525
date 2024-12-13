@@ -20,6 +20,8 @@ export class ContactFormComponent implements OnInit {
   countries: string[] = ['Colombia', 'Argentina', 'México'];
   departments: string[] = ['Cundinamarca', 'Antioquia', 'Magdalena'];
   cities: string[] = [];
+  validateState: string = '';
+  labelButton: string = 'Enviar';
 
   contactForm!: FormGroup;
   constructor(
@@ -31,12 +33,17 @@ export class ContactFormComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.route.queryParams.subscribe((params) => {
-      const validateState = params['edit'];
-      console.log('ID:', validateState);
-      if (validateState) {
-        /* traemos la consulta para llenar el form */
+      this.validateState = params['edit'];
+      if (this.validateState === 'true') {
+        const info = this._serviceData.getInfoArray();
+        console.log(info);
+        this.show_department = true;
+        this.validateCountry(info.country);
+        this.contactForm.patchValue(info);
       }
     });
+
+    this.labelButton = this.validateState === 'true' ? 'Update' : 'Enviar';
   }
 
   initForm() {
@@ -103,7 +110,7 @@ export class ContactFormComponent implements OnInit {
   sendInfo() {
     const fecha = new Date(this.contactForm.get('date_birthday')?.value);
     const año = fecha.getFullYear();
-    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
     const dia = String(fecha.getDate()).padStart(2, '0');
 
     const fechaFormateada = `${año}-${mes}-${dia}`;
@@ -112,8 +119,13 @@ export class ContactFormComponent implements OnInit {
     });
 
     if (this.contactForm.valid) {
-      this._serviceData.postInfoSelected(this.contactForm.value);
-      this.router.navigate(['view-info']);
+      if (this.validateState === 'true') {
+        this.router.navigate(['/view-info'], { queryParams: { edit: true } });
+        this._serviceData.postInfoUpdated(this.contactForm.value);
+      } else {
+        this.router.navigate(['view-info']);
+        this._serviceData.postInfoSelected(this.contactForm.value);
+      }
     } else {
       this.contactForm.markAllAsTouched();
       Swal.fire({

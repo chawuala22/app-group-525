@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataTransferService {
   private infoArraySendData: any = {};
+  private infoUpdateData: any = {};
 
   constructor() {}
 
@@ -12,7 +13,15 @@ export class DataTransferService {
     return (this.infoArraySendData = info);
   }
 
+  postInfoUpdated(info: any[]) {
+    return (this.infoUpdateData = info);
+  }
+
   getInfoArray() {
     return this.infoArraySendData;
+  }
+
+  getInfoUpdate() {
+    return this.infoUpdateData;
   }
 }
