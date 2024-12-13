@@ -1,86 +1,102 @@
-
-<input
-  pInputText
-  type="text"
-  (input)="onSearch($event)"
-  placeholder="Search..."
-/>
-
-<p-table
-  #dt
-  [value]="arrayInfoJSON"
-  [rows]="5"
-  [paginator]="true"
-  [globalFilterFields]="[
-    'sex',
-    'date_birthday',
-    'addres',
-    'name',
-    'email',
-    'house',
-    'country',
-    'Deparment',
-    'City',
-    'comment'
-  ]"
-  [tableStyle]="{ 'min-width': '75rem' }"
-  [rowHover]="true"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
->
-  <ng-template pTemplate="header">
-    <tr>
-      <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
-      <th pSortableColumn="sex">Sexo <p-sortIcon field="sex"></p-sortIcon></th>
-      <th pSortableColumn="date_birthday">
-        Fecha de nacimiento <p-sortIcon field="date_birthday"></p-sortIcon>
-      </th>
-      <th pSortableColumn="name">
-        Nombre <p-sortIcon field="name"></p-sortIcon>
-      </th>
-      <th pSortableColumn="last_name">
-        Apellido <p-sortIcon field="last_name"></p-sortIcon>
-      </th>
-      <th pSortableColumn="email">
-        Email <p-sortIcon field="email"></p-sortIcon>
-      </th>
-      <th pSortableColumn="addres">
-        Dirección <p-sortIcon field="addres"></p-sortIcon>
-      </th>
-      <th pSortableColumn="house">
-        Casa / apartamento <p-sortIcon field="house"></p-sortIcon>
-      </th>
-      <th pSortableColumn="country">
-        País <p-sortIcon field="country"></p-sortIcon>
-      </th>
-      <th pSortableColumn="Deparment">
-        Departamento <p-sortIcon field="Deparment"></p-sortIcon>
-      </th>
-      <th pSortableColumn="City">
-        Ciudad <p-sortIcon field="City"></p-sortIcon>
-      </th>
-      <th pSortableColumn="comment">
-        Comentarios <p-sortIcon field="comment"></p-sortIcon>
-      </th>
-      <th pSortableColumn="">Editar</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-user let-index="rowIndex">
-    <tr>
-      <td>{{ index + 1 }}</td>
-      <td>{{ user.sex }}</td>
-      <td>{{ user.date_birthday }}</td>
-      <td>{{ user.name }}</td>
-      <td>{{ user.last_name }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.addres }}</td>
-      <td>{{ user.house ?? "N/A" }}</td>
-      <td>{{ user.country }}</td>
-      <td>{{ user.Deparment ?? "N/A" }}</td>
-      <td>{{ user.City }}</td>
-      <td>{{ user.comment }}</td>
-      <td style="cursor: pointer">
-        <i class="pi pi-user-edit" (click)="editInfo(index)"></i>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+<div class="container-view">
+  <div class="back">
+    <a mat-raised-button routerLink="/" type="button">
+      <i class="pi pi-angle-left"> </i>Back</a
+    >
+  </div>
+  <div class="container-search">
+    <input
+      pInputText
+      type="text"
+      (input)="onSearch($event)"
+      placeholder="Search..."
+    />
+  </div>
+  <div class="container-table">
+    <p-table
+      #dt
+      [value]="arrayInfoJSON"
+      [rows]="5"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'sex',
+        'date_birthday',
+        'addres',
+        'name',
+        'email',
+        'house',
+        'country',
+        'Deparment',
+        'City',
+        'comment'
+      ]"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      [rowHover]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+          <th pSortableColumn="sex">
+            Sexo <p-sortIcon field="sex"></p-sortIcon>
+          </th>
+          <th pSortableColumn="date_birthday">
+            Fecha de nacimiento <p-sortIcon field="date_birthday"></p-sortIcon>
+          </th>
+          <th pSortableColumn="name">
+            Nombre <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="last_name">
+            Apellido <p-sortIcon field="last_name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="email">
+            Email <p-sortIcon field="email"></p-sortIcon>
+          </th>
+          <th pSortableColumn="addres">
+            Dirección <p-sortIcon field="addres"></p-sortIcon>
+          </th>
+          <th pSortableColumn="house">
+            Casa / apartamento <p-sortIcon field="house"></p-sortIcon>
+          </th>
+          <th pSortableColumn="country">
+            País <p-sortIcon field="country"></p-sortIcon>
+          </th>
+          <th pSortableColumn="Deparment">
+            Departamento <p-sortIcon field="Deparment"></p-sortIcon>
+          </th>
+          <th pSortableColumn="City">
+            Ciudad <p-sortIcon field="City"></p-sortIcon>
+          </th>
+          <th pSortableColumn="comment">
+            Comentarios <p-sortIcon field="comment"></p-sortIcon>
+          </th>
+          <th pSortableColumn="">Editar</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user let-index="rowIndex">
+        <tr>
+          <td>{{ index + 1 }}</td>
+          <td>{{ user.sex }}</td>
+          <td>{{ user.date_birthday }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.addres }}</td>
+          <td>{{ user.house ?? "N/A" }}</td>
+          <td>{{ user.country }}</td>
+          <td>{{ user.Deparment ?? "N/A" }}</td>
+          <td>{{ user.City }}</td>
+          <td>{{ user.comment }}</td>
+          <td style="cursor: pointer">
+            <i class="pi pi-user-edit" (click)="editInfo(index)"></i>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No data found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
